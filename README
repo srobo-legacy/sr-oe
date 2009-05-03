@@ -1,0 +1,25 @@
+This is where all the software that gets shipped on the SR BeagleBoard
+gets built.
+
+ = How to build = 
+
+After cloning this repository, run the "checkout" script:
+
+% ./checkout
+
+This will ask you a question.  Answer it.  It'll then checkout the
+upstream openembedded tree and bitbake.
+
+When that's done, run:
+
+% . sr/profile.sh
+% bitbake sr-image
+
+This will then build stuff for a long time.  Come back in a few hours! 
+
+ = Normal Operation = 
+
+You should only run the "checkout" script once.  To re-approach your
+build environment in a new shell, just source the profile.sh again:
+
+% . sr/profile
