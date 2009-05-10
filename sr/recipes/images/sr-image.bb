@@ -9,8 +9,10 @@ DEPENDS = "task-base-extended \
            ${SPLASH} \
            ${ZZAPSPLASH} \
 	   zlib iotop ipython \
-	   python ipkg zile"
+	   python ipkg zile \
+	   c2py"
 
+# c2py is intentionally left out here, as it's shipped in robot.zip
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
             ${SPLASH} \
