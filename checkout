@@ -24,15 +24,26 @@ git submodule init
 echo '*****************************************************************'
 echo '***** Checking out openembedded.  This may take some time: ******'
 echo '*****************************************************************'
-git submodule update
-
+if ( ! git submodule update )
+    then
+    echo "ERROR: failed to update submodules"
+    echo "This seems to happen quite often -- invoke this script again."
+    echo '(Check your net connection is up too!)'
+    exit
+fi
 
 echo '*********************************'
 echo '***** Checking out bitbake. *****'
 echo '*********************************'
 mkdir opt
 cd opt
-svn co svn://svn.berlios.de/bitbake/branches/bitbake-1.8/ bitbake
+if ( ! svn co svn://svn.berlios.de/bitbake/branches/bitbake-1.8/ bitbake )
+    then
+    echo "ERROR: Failed to checkout bitbake"
+    echo "This seems to happen quite often -- invoke this script again."
+    echo '(Check your net connection is up too!)'
+    exit
+fi
 cd ..
 
 # Stick OE_HOME into the right place:
