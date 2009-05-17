@@ -10,15 +10,19 @@ DEPENDS = "task-base-extended \
            ${ZZAPSPLASH} \
 	   zlib iotop ipython \
 	   python ipkg zile \
-	   c2py"
+	   c2py robovis opencv"
 
-# c2py is intentionally left out here, as it's shipped in robot.zip
+# The following are intentionally left out of the install, as they're
+# shipped in robot.zip:
+# * c2py
+# * robovis
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
             ${SPLASH} \
             ${ZZAPSPLASH} \
 	    zlib iotop ipython \
-	    python python-modules ipkg zile"
+	    python python-modules ipkg zile \
+	    opencv"
 
 export IMAGE_BASENAME = "sr-image"
 IMAGE_LINGUAS = ""
