@@ -22,7 +22,7 @@ cd $OE_HOME
 
 git submodule init
 echo '*****************************************************************'
-echo '***** Checking out openembedded.  This may take some time: ******'
+echo '***** Downloading submodules.  This may take some time: ******'
 echo '*****************************************************************'
 if ( ! git submodule update )
     then
@@ -31,20 +31,6 @@ if ( ! git submodule update )
     echo '(Check your net connection is up too!)'
     exit
 fi
-
-echo '*********************************'
-echo '***** Checking out bitbake. *****'
-echo '*********************************'
-mkdir opt
-cd opt
-if ( ! svn co svn://svn.berlios.de/bitbake/branches/bitbake-1.8/ bitbake )
-    then
-    echo "ERROR: Failed to checkout bitbake"
-    echo "This seems to happen quite often -- invoke this script again."
-    echo '(Check your net connection is up too!)'
-    exit
-fi
-cd ..
 
 # Stick OE_HOME into the right place:
 sed -i -e "s#OE_HOME=\"MAGIC_BEES_1234\"#OE_HOME=$OE_HOME#" ./sr/profile.sh
