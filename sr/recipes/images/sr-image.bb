@@ -22,7 +22,7 @@ IMAGE_INSTALL = "task-base-extended \
             ${ZZAPSPLASH} \
 	    zlib iotop ipython \
 	    python python-modules ipkg zile \
-	    opencv-apps"
+	    opencv-apps kernel-module-uvcvideo"
 
 export IMAGE_BASENAME = "sr-image"
 IMAGE_LINGUAS = ""
