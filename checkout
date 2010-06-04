@@ -1,46 +1,23 @@
 #!/bin/bash
 
-OE_HOME=`pwd`
-echo "*absolute* path of SR beagleboard build env: \"$OE_HOME\""
-read -p "Is the above path correct? [y/N] " resp
-
-if [[ "$resp" != "y" ]]
-	then
-	echo "Aborting."
-	exit 1
-fi
-
-if [[ "${OE_HOME:0:1}" != "/" ]]
-	then
-	echo "Error: OE_HOME must be an absolute path." 
-	exit 1
-fi
-
 # In the future, we may support this script being invoked from elsewhere
 # (someone's going to do it...)
 cd $OE_HOME
 
-# If invoked with arguments, don't try writing stuff.
-if [[ $1 == "" ]]
-    then
-
-    git submodule init
-    echo '*****************************************************************'
-    echo '***** Downloading submodules.  This may take some time: ******'
-    echo '*****************************************************************'
-    if ( ! git submodule update )
+git submodule init
+echo '*****************************************************************'
+echo '***** Downloading submodules.  This may take some time: ******'
+echo '*****************************************************************'
+if ( ! git submodule update )
 	then
 	echo "ERROR: failed to update submodules"
 	echo "This seems to happen quite often -- invoke this script again."
 	echo '(Check your net connection is up too!)'
 	exit
-    fi
-
-    echo "Checkout complete."
-    echo "To continue your building quest, do the following in your shell:"
-    echo "% . sr/profile.sh"
-    echo "% bitbake sr-image"
 fi
 
-# Stick OE_HOME into the right place:
-sed -i -e "s#OE_HOME=\"MAGIC_BEES_1234\"#OE_HOME=$OE_HOME#" ./sr/profile.sh
+echo "Checkout complete."
+echo "To continue your building quest, do the following in your shell:"
+echo "% . sr/profile.sh"
+echo "% bitbake sr-image"
+
