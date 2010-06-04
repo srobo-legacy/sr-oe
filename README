@@ -3,12 +3,10 @@ gets built.
 
  = How to build = 
 
-After cloning this repository, run the "checkout" script:
+After cloning this repository, checkout the submodules:
 
-% ./checkout
-
-This will ask you a question.  Answer it.  It'll then checkout the
-upstream openembedded tree and bitbake.
+% git submodule init
+% git submodule update
 
 When that's done, run:
 
@@ -19,7 +17,7 @@ This will then build stuff for a long time.  Come back in a few hours!
 
  = Normal Operation = 
 
-You should only run the "checkout" script once.  To re-approach your
-build environment in a new shell, just source the profile.sh again:
+To re-approach your build environment in a new shell, just source the
+profile.sh again:
 
 % . sr/profile
