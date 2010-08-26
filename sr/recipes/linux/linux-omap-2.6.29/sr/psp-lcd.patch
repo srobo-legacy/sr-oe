@@ -1,0 +1,11 @@
+--- git/arch/arm/mach-omap2/board-omap3beagle.c	2010-08-26 11:25:58.845563321 +0100
++++ /tmp/kernel/arch/arm/mach-omap2/board-omap3beagle.c	2010-08-26 00:30:40.077561244 +0100
+@@ -387,7 +387,7 @@
+ static struct omap_dss_display_config beagle_display_data_dvi = {
+ 	.type = OMAP_DISPLAY_TYPE_DPI,
+ 	.name = "dvi",
+-	.panel_name = "panel-generic",
++	.panel_name = "sharp-ls037v7dw01",
+ 	.u.dpi.data_lines = 24,
+ 	.panel_reset_gpio = 170,
+ 	.panel_enable = beagle_enable_dvi,
