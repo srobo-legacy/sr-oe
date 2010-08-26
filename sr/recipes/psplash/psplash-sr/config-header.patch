@@ -1,0 +1,17 @@
+--- /dev/null	2010-08-05 22:23:14.528563561 +0100
++++ psplash/psplash-config.h	2010-08-26 21:32:21.517561970 +0100
+@@ -0,0 +1,14 @@
++/* Background colour */
++#define BG_R 0x00
++#define BG_G 0x00
++#define BG_B 0x00
++
++/* Progress bar background colour */
++#define BARB_R 0x00
++#define BARB_G 0x00
++#define BARB_B 0x00
++
++/* Progress bar foreground colour */
++#define BARF_R 0x00
++#define BARF_G 0x64
++#define BARF_B 0xde
