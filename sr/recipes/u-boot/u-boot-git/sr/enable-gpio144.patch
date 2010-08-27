@@ -1,0 +1,10 @@
+--- u-boot/board/omap3/beagle/beagle.h	2010-08-26 17:53:03.049893596 +0100
++++ u-boot/board/omap3/beagle/beagle.h	2010-08-26 17:53:22.856437535 +0100
+@@ -377,7 +377,6 @@
+  MUX_VAL(CP(MCBSP3_DX),		(IEN  | PTD | DIS | M4)) /*GPIO_140*/\
+  MUX_VAL(CP(MCBSP3_DR),		(IEN  | PTD | DIS | M4)) /*GPIO_142*/\
+  MUX_VAL(CP(MCBSP3_CLKX),	(IEN  | PTD | DIS | M4)) /*GPIO_141*/\
+- MUX_VAL(CP(UART2_CTS),		(IEN  | PTU | EN  | M0)) /*UART2_CTS*/\
+  MUX_VAL(CP(UART2_RTS),		(IDIS | PTD | DIS | M0)) /*UART2_RTS*/\
+  MUX_VAL(CP(UART2_TX),		(IDIS | PTD | DIS | M0)) /*UART2_TX*/
+ 
