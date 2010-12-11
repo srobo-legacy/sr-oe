@@ -9,7 +9,7 @@ DEPENDS = "task-base-extended \
            ${SPLASH} \
            ${ZZAPSPLASH} \
 	   zlib iotop ipython \
-	   python ipkg zile \
+	   python zile \
 	   c2py robovis"
 
 # The following are intentionally left out of the install, as they're
@@ -21,7 +21,7 @@ IMAGE_INSTALL = "task-base-extended \
             ${SPLASH} \
             ${ZZAPSPLASH} \
 	    zlib iotop ipython \
-	    python python-modules ipkg zile \
+	    python python-modules zile \
 	    opencv-apps kernel-module-uvcvideo"
 
 export IMAGE_BASENAME = "sr-image"
