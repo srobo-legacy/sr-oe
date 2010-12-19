@@ -148,26 +148,6 @@ SRC_URI = "git://arago-project.org/git/people/sriram/ti-psp-omap.git;protocol=gi
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
 "
 
-SRC_URI_append_omap3-touchbook = " \
-                                  file://0001-ARM-OMAP-add-spi-platform-devices.patch \
-                                  file://0002-MMA7455L-accelerometer-driver.patch \
-                                  file://0003-bq27x00_battery-remove-error-message-output.patch \
-                                  file://0004-bq27x00_battery-add-charged-gpio.patch \
-                                  file://0005-adf7846-add-more-debugging.patch \
-                                  file://0006-ads7846-read-max-mix-x-y-from-pdata.patch \
-                                  file://0007-ads7846-add-settling-delay-to-pdata.patch \
-                                  file://0008-DSS2-OMAPFB-Translate-X-Y-coordinates-for-the-video-.patch \
-                                  file://0009-DSS2-Fix-scaling-checks-when-rotation-is-90-or-270-d.patch \
-                                  file://0010-add-touchbook-hid-driver.patch \
-                                  file://0011-Make-backlight-controls-accessible-to-users.patch \
-                                  file://0012-ads7846-don-t-error-out-when-there-s-no-pendown-gpio.patch \
-                                  file://0013-ASoC-add-driver-for-omap3-touchbook.patch \
-                                  file://0014-backlight-add-PWM-support.patch \
-                                  file://0015-Forward-port-TWL4030-BCI-driver-from-2.6.29-to-2.6.3.patch \
-                                  file://0016-ARM-OMAP-omap3-touchbook-update-boardfile.patch \
-#                                 file://0017-ARM-OMAP-add-800MHz-OPP-and-remove-125MHz-one.patch \
-"
-
 addtask quiltfixup before do_patch after do_unpack
 do_quiltfixup() {
 	rm ${S}/.pc -rf
