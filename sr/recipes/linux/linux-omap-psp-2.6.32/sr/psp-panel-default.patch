@@ -1,0 +1,25 @@
+From ea8ce293810ce84f227aa14a042265a4d0d8760e Mon Sep 17 00:00:00 2001
+From: Robert Spanton <rspanton@zepler.net>
+Date: Thu, 13 Jan 2011 03:14:06 +0000
+Subject: [PATCH 2/2] Set the default display panel to be the psp 1000 panel
+
+---
+ arch/arm/mach-omap2/board-omap3beagle.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
+index 2677b41..0a796e4 100644
+--- a/arch/arm/mach-omap2/board-omap3beagle.c
++++ b/arch/arm/mach-omap2/board-omap3beagle.c
+@@ -247,7 +247,7 @@ static void beagle_disable_dvi(struct omap_dss_device *dssdev)
+ static struct omap_dss_device beagle_dvi_device = {
+ 	.type = OMAP_DISPLAY_TYPE_DPI,
+ 	.name = "dvi",
+-	.driver_name = "generic_panel",
++	.driver_name = "psp_1000_panel",
+ 	.phy.dpi.data_lines = 24,
+ 	.reset_gpio = 170,
+ 	.platform_enable = beagle_enable_dvi,
+-- 
+1.7.3.4
+

@@ -143,6 +143,8 @@ SRC_URI = "git://arago-project.org/git/people/sriram/ti-psp-omap.git;protocol=gi
            file://pending/0007-RTC-s35390a-Bug-Fix-Pie-mode-doesn-t-work.patch \
            file://pending/0008-OMAP3EVM-Set-minimum-throughput-requirement-for-DSS.patch \
            file://pending/0009-ehci-fix-device-detect-issue-with-modules.patch \
+	   file://sr/psp-panel-driver.patch \
+	   file://sr/psp-panel-default.patch \
            file://defconfig"
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \

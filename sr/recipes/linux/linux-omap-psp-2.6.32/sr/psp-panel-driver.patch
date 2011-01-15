@@ -1,0 +1,172 @@
+From f4abc5d9a8e2a4156c3f3610d9cd74f7e4b40b93 Mon Sep 17 00:00:00 2001
+From: Robert Spanton <rspanton@zepler.net>
+Date: Thu, 13 Jan 2011 03:06:22 +0000
+Subject: [PATCH 1/2] Add a panel driver for the PSP 1000's LCD
+
+Based upon the Sharp ls037v7dw01 panel driver, this driver supports
+the TFT found in the Playstation Portable.
+---
+ drivers/video/omap2/displays/Kconfig          |    6 ++
+ drivers/video/omap2/displays/Makefile         |    2 +
+ drivers/video/omap2/displays/panel-psp-1000.c |  120 +++++++++++++++++++++++++
+ 3 files changed, 128 insertions(+), 0 deletions(-)
+ create mode 100644 drivers/video/omap2/displays/panel-psp-1000.c
+
+diff --git a/drivers/video/omap2/displays/Kconfig b/drivers/video/omap2/displays/Kconfig
+index 875250a..8a2603f 100644
+--- a/drivers/video/omap2/displays/Kconfig
++++ b/drivers/video/omap2/displays/Kconfig
+@@ -13,6 +13,12 @@ config PANEL_LGPHILIPS_LB035Q02
+ 	help
+ 	  LCD Panel used on Overo Palo35
+ 
++config PANEL_PSP_1000
++	tristate "PSP 1000 LCD Panel"
++	depends on OMAP2_DSS
++	help
++	  LCD Panel used in the Sony Playstation Portable 1000
++
+ config PANEL_SAMSUNG_LTE430WQ_F0C
+         tristate "Samsung LTE430WQ-F0C LCD Panel"
+         depends on OMAP2_DSS
+diff --git a/drivers/video/omap2/displays/Makefile b/drivers/video/omap2/displays/Makefile
+index f8e6c52..ebbdfba 100644
+--- a/drivers/video/omap2/displays/Makefile
++++ b/drivers/video/omap2/displays/Makefile
+@@ -1,5 +1,7 @@
+ obj-$(CONFIG_PANEL_GENERIC) += panel-generic.o
+ obj-$(CONFIG_PANEL_LGPHILIPS_LB035Q02) += panel-lgphilips-lb035q02.o
++obj-$(CONFIG_PANEL_PSP_1000) += panel-psp-1000.o
++
+ obj-$(CONFIG_PANEL_SAMSUNG_LTE430WQ_F0C) += panel-samsung-lte430wq-f0c.o
+ obj-$(CONFIG_PANEL_SHARP_LS037V7DW01) += panel-sharp-ls037v7dw01.o
+ obj-$(CONFIG_PANEL_SHARP_LQ043T1DG01) += panel-sharp-lq043t1dg01.o
+diff --git a/drivers/video/omap2/displays/panel-psp-1000.c b/drivers/video/omap2/displays/panel-psp-1000.c
+new file mode 100644
+index 0000000..d1d4863
+--- /dev/null
++++ b/drivers/video/omap2/displays/panel-psp-1000.c
+@@ -0,0 +1,120 @@
++/*
++ * LCD panel driver for PSP 1000 TFT
++ *
++ * Copyright (C) 2010 Robert Spanton
++ * Copyright (C) 2008 Nokia Corporation
++ * Author: Tomi Valkeinen <tomi.valkeinen@nokia.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 as published by
++ * the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <linux/module.h>
++#include <linux/delay.h>
++#include <linux/device.h>
++#include <linux/regulator/consumer.h>
++#include <linux/err.h>
++
++#include <plat/display.h>
++
++static struct omap_video_timings psp_1000_timings = {
++	.x_res = 480,
++	.y_res = 272,
++
++	.pixel_clock	= 9000,
++
++	.hsw		= 41,
++	.hfp		= 2,
++	.hbp		= 2,
++
++	.vsw		= 10,
++	.vfp		= 2,
++	.vbp		= 2,
++};
++
++static int psp_1000_panel_probe(struct omap_dss_device *dssdev)
++{
++	dssdev->panel.config = OMAP_DSS_LCD_TFT | OMAP_DSS_LCD_IVS |
++		OMAP_DSS_LCD_IHS;
++	dssdev->panel.acb = 0x28;
++	dssdev->panel.timings = psp_1000_timings;
++
++	return 0;
++}
++
++static void psp_1000_panel_remove(struct omap_dss_device *dssdev)
++{
++
++}
++
++static int psp_1000_panel_enable(struct omap_dss_device *dssdev)
++{
++	int r = 0;
++
++	/* wait couple of vsyncs until enabling the LCD */
++	msleep(50);
++
++	if (dssdev->platform_enable)
++		r = dssdev->platform_enable(dssdev);
++
++	return r;
++}
++
++static void psp_1000_panel_disable(struct omap_dss_device *dssdev)
++{
++	if (dssdev->platform_disable)
++		dssdev->platform_disable(dssdev);
++
++	/* wait at least 5 vsyncs after disabling the LCD */
++
++	msleep(100);
++}
++
++static int psp_1000_panel_suspend(struct omap_dss_device *dssdev)
++{
++	psp_1000_panel_disable(dssdev);
++	return 0;
++}
++
++static int psp_1000_panel_resume(struct omap_dss_device *dssdev)
++{
++	return psp_1000_panel_enable(dssdev);
++}
++
++static struct omap_dss_driver psp_1000_driver = {
++	.probe		= psp_1000_panel_probe,
++	.remove		= psp_1000_panel_remove,
++
++	.enable		= psp_1000_panel_enable,
++	.disable	= psp_1000_panel_disable,
++	.suspend	= psp_1000_panel_suspend,
++	.resume		= psp_1000_panel_resume,
++
++	.driver         = {
++		.name   = "psp_1000_panel",
++		.owner  = THIS_MODULE,
++	},
++};
++
++static int __init psp_1000_panel_drv_init(void)
++{
++	return omap_dss_register_driver(&psp_1000_driver);
++}
++
++static void __exit psp_1000_panel_drv_exit(void)
++{
++	omap_dss_unregister_driver(&psp_1000_driver);
++}
++
++module_init(psp_1000_panel_drv_init);
++module_exit(psp_1000_panel_drv_exit);
++MODULE_LICENSE("GPL");
+-- 
+1.7.3.4
+
