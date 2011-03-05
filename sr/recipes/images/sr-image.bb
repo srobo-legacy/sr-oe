@@ -11,7 +11,7 @@ DEPENDS = "task-base-extended \
 	   python zile \
 	   c2py robovis \
 	   xf86-input-evdev xf86-video-fbdev xterm \
-	   xserver-xorg gtk+ libxtst"
+	   xserver-xorg gtk+ libxtst mtd-utils"
 
 # The following are intentionally left out of the install, as they're
 # shipped in robot.zip:
