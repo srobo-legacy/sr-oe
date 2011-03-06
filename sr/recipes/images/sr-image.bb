@@ -11,7 +11,7 @@ DEPENDS = "task-base-extended \
 	   python zile \
 	   c2py robovis \
 	   xf86-input-evdev xf86-video-fbdev xterm \
-	   xserver-xorg gtk+ mtd-utils "
+	   xserver-xorg gtk+ mtd-utils roboscripts "
 
 # The following are intentionally left out of the install, as they're
 # shipped in robot.zip:
@@ -24,7 +24,7 @@ IMAGE_INSTALL = "task-base-extended \
 	    python python-modules zile \
 	    opencv-apps kernel-module-uvcvideo \
 	    xf86-input-evdev xf86-video-fbdev xterm \
-	    xserver-xorg gtk+ "
+	    xserver-xorg gtk+ roboscripts "
 
 export IMAGE_BASENAME = "sr-image"
 IMAGE_LINGUAS = ""
