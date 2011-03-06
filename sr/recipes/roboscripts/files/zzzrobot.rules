@@ -1,0 +1,2 @@
+SUBSYSTEM=="block", ACTION=="add"    RUN+="/etc/robot/insert.sh"
+SUBSYSTEM=="block", ACTION=="remove" RUN+="/etc/robot/remove.sh"
