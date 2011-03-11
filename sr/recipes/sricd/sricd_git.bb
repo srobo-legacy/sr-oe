@@ -1,7 +1,7 @@
 DESCRIPTION = "SRIC controller daemon"
-SRCREV = "eb44ad101588e0aa2632b001ce9969c3c4b6abf8"
+SRCREV = "e9a932294f27d1056e8f892444f6e9e78cb6a0e0"
 
-PR = "r3"
+PR = "r5"
 PV = "git_${SRCREV}"
    
 inherit pkgconfig
