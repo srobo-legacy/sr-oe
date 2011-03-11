@@ -9,5 +9,9 @@ inherit pkgconfig
 SRC_URI = "git://git.srobo.org/sricd.git;protocol=git"
 
 do_compile() {
-	oe_runmake HOSTCC=${BUILD_CC} -C ${WORKDIR}/git
+	oe_runmake HOSTCC=${BUILD_CC} PREFIX=/usr -C ${WORKDIR}/git
+}
+
+do_install() {
+	oe_runmake 'DESTDIR=${D}' PREFIX=/usr -C ${WORKDIR}/git install
 }
