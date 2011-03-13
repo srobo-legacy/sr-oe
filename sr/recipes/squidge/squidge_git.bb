@@ -1,5 +1,5 @@
 DESCRIPTION = "Student Robotics GUI"
-SRCREV = "43af2a55906a32bb9d7da14fe7ad7daa32db77f4"
+SRCREV = "41eb91fcc36d18dc5f0d90abb6c1d7c9506eaa5a"
 
 PR = "r1"
 PV = "git_${SRCREV}"
@@ -8,7 +8,7 @@ DEPENDS = "gtk+"
 
 inherit pkgconfig
 
-SRC_URI = "git://git.srobo.org/~rbarlow/squidge.git;protocol=git"
+SRC_URI = "git://git.srobo.org/squidge.git;protocol=git"
 
 CFLAGS_append = " `pkg-config --cflags gtk+-2.0 gdk-2.0`"
 LDFLAGS_append = " `pkg-config --libs gtk+-2.0 gdk-2.0`"
