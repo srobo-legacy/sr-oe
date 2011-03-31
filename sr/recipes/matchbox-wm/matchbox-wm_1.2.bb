@@ -1,9 +1,9 @@
 require matchbox-wm.inc
 
-DEPENDS = "libmatchbox virtual/libx11 libxext libxcomposite libxfixes libxdamage libxrender startup-notification expat gconf gconf-native "
+DEPENDS = "libmatchbox virtual/libx11 libxext libxcomposite libxfixes libxdamage libxrender"
 RDEPENDS_${PN} = ""
 
-PR = "r7"
+PR = "r9"
 
 SRC_URI = "http://matchbox-project.org/sources/matchbox-window-manager/1.2/matchbox-window-manager-${PV}.tar.bz2 \
            file://configure_fix.patch \
@@ -30,11 +30,15 @@ ALTERNATIVE_PATH = "${bindir}/matchbox-window-manager"
 ALTERNATIVE_PRIORITY = "10"
 
 EXTRA_OECONF = " \
-                --enable-startup-notification\
-		--enable-gconf \
-		 --with-expat-lib=${STAGING_LIBDIR} \
-		 --with-expat-includes=${STAGING_INCDIR} \
-		--disable-xrm"
+                --disable-startup-notification\
+		--disable-gconf \
+		--disable-xrm \
+		--disable-composite \
+		--disable-session \
+		--disable-expat \
+		--disable-xrm \
+		--enable-standalone \
+"
 
 do_configure_prepend () {
     cp ${WORKDIR}/gconf-2.m4 ${S}/
