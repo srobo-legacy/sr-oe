@@ -56,12 +56,10 @@ then
 	ln -sf /var/tmp /tmp
 fi
 
-#
-# Update dynamic library cache, but only if ld.so.conf is present
-#
-if [ -e /etc/ld.so.conf ] ; then
-	/sbin/ldconfig
-fi
+# Don't try to run ldconfig -- this is a read-only FS, it won't help.
+#if [ -e /etc/ld.so.conf ] ; then
+# /sbin/ldconfig
+#fi
 
 # Set the system clock from hardware clock
 if test -e /etc/timestamp
