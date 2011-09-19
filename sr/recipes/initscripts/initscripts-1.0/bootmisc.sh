@@ -3,15 +3,6 @@
 #
 
 . /etc/default/rcS
-#
-# Put a nologin file in /etc to prevent people from logging in before
-# system startup is complete.
-#
-if test "$DELAYLOGIN" = yes
-then
-  echo "System bootup in progress - please wait" > /etc/nologin
-  cp /etc/nologin /etc/nologin.boot
-fi
 
 #
 # Set pseudo-terminal access permissions.
