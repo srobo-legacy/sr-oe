@@ -46,16 +46,6 @@ then
 	mv /etc/motd.tmp /etc/motd
 fi
 
-#
-# This is as good a place as any for a sanity check
-# /tmp should be a symlink to /var/tmp to cut down on the number
-# of mounted ramdisks.
-if test ! -L /tmp && test -d /var/tmp
-then
-	rm -rf /tmp
-	ln -sf /var/tmp /tmp
-fi
-
 # Don't try to run ldconfig -- this is a read-only FS, it won't help.
 #if [ -e /etc/ld.so.conf ] ; then
 # /sbin/ldconfig
