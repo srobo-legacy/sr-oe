@@ -28,7 +28,6 @@ SRC_URI += " \
        file://local.rules \
        file://default \
        file://init \
-       file://cache \
        file://udev-compat-wrapper-patch \
 "
 
@@ -114,7 +113,6 @@ do_install () {
 	oe_runmake 'DESTDIR=${D}' INSTALL=install install
 	install -d ${D}${sysconfdir}/init.d
 	install -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/udev
-	install -m 0755 ${WORKDIR}/cache ${D}${sysconfdir}/init.d/udev-cache
 
 	install -d ${D}${sysconfdir}/default
 	install -m 0755 ${WORKDIR}/default ${D}${sysconfdir}/default/udev
@@ -158,17 +156,6 @@ do_install_append_nokia900() {
 	install -m 0644 ${WORKDIR}/udev-rules-nokia-n900-snd.rules ${D}${sysconfdir}/udev/rules.d/udev-rules-nokia-n900-snd.rules
 	install -m 0755 ${WORKDIR}/nokia-n900-mac-hack.sh ${D}${sysconfdir}/udev/scripts/nokia-n900-mac-hack.sh
 }
-
-# Create the cache after checkroot has run
-pkg_postinst_udev_append() {
-	if test "x$D" != "x"; then
-		OPT="-r $D"
-	else
-		OPT="-s"
-	fi
-	update-rc.d $OPT udev-cache start 12 S .
-}
-
 
 SRC_URI[md5sum] = "5e66b90bfa91e9ed101fdb66735af658"
 SRC_URI[sha256sum] = "a1fbc567ab6c2062ce32cebe6c96664282a979e0b7bf402b16fb3795c9ac0ae8"
