@@ -15,7 +15,8 @@ DEPENDS = "task-base-extended \
 	   xf86-input-evdev xf86-video-fbdev xterm \
 	   xserver-xorg gtk+ mtd-utils roboscripts \
 	   libwnck matchbox-wm \
-	   python-pyyaml python-pycairo python-pygtk"
+	   python-pyyaml python-pycairo python-pygtk \
+	   sr-sshkey"
 
 # The following are intentionally left out of the install, as they're
 # shipped in robot.zip:
@@ -30,7 +31,8 @@ IMAGE_INSTALL = "task-base-extended \
 	    xf86-input-evdev xf86-video-fbdev xterm \
 	    xserver-xorg gtk+ roboscripts \
 	    libwnck matchbox-wm \
-	    python-pyyaml python-pycairo python-pygtk"
+	    python-pyyaml python-pycairo python-pygtk \
+	    sr-sshkey"
 
 export IMAGE_BASENAME = "sr-image"
 IMAGE_LINGUAS = ""
