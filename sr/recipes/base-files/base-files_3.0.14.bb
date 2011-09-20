@@ -88,6 +88,9 @@ do_install () {
 		ln -sf /media/$d ${D}/mnt/$d
 	done
 
+	# Mountpoint for user key
+	install -m 0777 -d ${D}/mnt/user
+
 	if [ -n "${MACHINE}" -a "${hostname}" = "openembedded" ]; then
 		echo ${MACHINE} > ${D}${sysconfdir}/hostname
 	else
