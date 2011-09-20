@@ -124,7 +124,6 @@ RDEPENDS_task-base = "\
 RDEPENDS_task-base-extended = "\
     task-base \
     ${ADD_WIFI} \
-    ${ADD_BT} \
     "
 
 ADD_WIFI = ""
