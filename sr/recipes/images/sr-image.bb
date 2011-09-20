@@ -2,6 +2,8 @@ IMAGE_PREPROCESS_COMMAND = "create_etc_timestamp"
 
 ANGSTROM_EXTRA_INSTALL ?= ""
 
+BAD_RECOMMENDATIONS = "avahi-daemon avahi-autoipd"
+
 # psplash-zap tells psplash when to quit
 SPLASH = "psplash-sr psplash-zap"
 
