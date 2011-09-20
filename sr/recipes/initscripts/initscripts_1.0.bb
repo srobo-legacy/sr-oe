@@ -55,7 +55,6 @@ do_install () {
 
 	install -m 0755    ${WORKDIR}/functions		${D}${sysconfdir}/init.d
 	install -m 0755    ${WORKDIR}/bootmisc.sh	${D}${sysconfdir}/init.d
-	install -m 0755    ${WORKDIR}/checkroot		${D}${sysconfdir}/init.d
 	install -m 0755    ${WORKDIR}/halt		${D}${sysconfdir}/init.d
 	install -m 0755    ${WORKDIR}/hostname.sh	${D}${sysconfdir}/init.d
 	install -m 0755    ${WORKDIR}/mountall.sh	${D}${sysconfdir}/init.d
@@ -101,7 +100,6 @@ do_install () {
 	ln -sf		../init.d/save-rtc.sh	${D}${sysconfdir}/rc0.d/S25save-rtc.sh
 	ln -sf		../init.d/save-rtc.sh	${D}${sysconfdir}/rc6.d/S25save-rtc.sh
 	ln -sf		../init.d/banner	${D}${sysconfdir}/rcS.d/S02banner
-	ln -sf		../init.d/checkroot		${D}${sysconfdir}/rcS.d/S10checkroot
 #	ln -sf		../init.d/checkfs.sh	${D}${sysconfdir}/rcS.d/S30checkfs.sh
 	ln -sf		../init.d/mountall.sh	${D}${sysconfdir}/rcS.d/S35mountall.sh
 	ln -sf		../init.d/hostname.sh	${D}${sysconfdir}/rcS.d/S39hostname.sh
