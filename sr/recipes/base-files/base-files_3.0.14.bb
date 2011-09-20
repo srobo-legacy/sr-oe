@@ -135,6 +135,9 @@ do_install () {
         fi
 
 	install -m 0644 ${WORKDIR}/nsswitch.conf ${D}${sysconfdir}/nsswitch.conf
+
+	# Make resolv.conf a symlink to /tmp/resolv.conf
+	ln -sf /tmp/resolv.conf ${D}/etc/resolv.conf
 }
 
 
