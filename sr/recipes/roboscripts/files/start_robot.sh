@@ -12,6 +12,7 @@ cd $1
 touch .srobo
 
 # Unzip
+mkdir .robottmp
 unzip -o robot.zip -d .robottmp
 wait $!
 

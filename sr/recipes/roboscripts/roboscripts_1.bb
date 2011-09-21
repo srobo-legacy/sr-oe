@@ -1,7 +1,7 @@
 DESCRIPTION = "SR scripts for starting/stopping user code on a robot"
 DEPENDS = "initscripts"
 
-PR = "r3"
+PR = "r4"
 
 inherit update-rc.d
 
