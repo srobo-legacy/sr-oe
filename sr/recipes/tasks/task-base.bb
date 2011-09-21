@@ -13,7 +13,6 @@ PACKAGES = ' \
             \
             ${@base_contains("MACHINE_FEATURES", "acpi", "task-base-acpi", "",d)} \
             ${@base_contains("MACHINE_FEATURES", "alsa", "task-base-alsa", "", d)} \
-            ${@base_contains("MACHINE_FEATURES", "apm", "task-base-apm", "", d)} \
             ${@base_contains("MACHINE_FEATURES", "ext2", "task-base-ext2", "", d)} \
             ${@base_contains("MACHINE_FEATURES", "vfat", "task-base-vfat", "", d)} \
             ${@base_contains("MACHINE_FEATURES", "irda", "task-base-irda", "",d)} \
@@ -94,7 +93,6 @@ RDEPENDS_task-base = "\
     ${HOTPLUG} \
     \
     ${@base_contains('MACHINE_FEATURES', 'kernel26','task-base-kernel26','task-base-kernel24',d)} \
-    ${@base_contains('MACHINE_FEATURES', 'apm', 'task-base-apm', '',d)} \
     ${@base_contains('MACHINE_FEATURES', 'acpi', 'task-base-acpi', '',d)} \
     ${@base_contains('MACHINE_FEATURES', 'keyboard', 'task-base-keyboard', '',d)} \
     \
