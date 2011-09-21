@@ -15,7 +15,8 @@ DEPENDS = "task-base-extended \
 	   xserver-xorg gtk+ mtd-utils roboscripts \
 	   libwnck matchbox-wm \
 	   python-pyyaml python-pycairo python-pygtk \
-	   sr-sshkey screen bzip2 xz"
+	   sr-sshkey screen bzip2 xz \
+	   startup-notification"
 
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
@@ -27,7 +28,8 @@ IMAGE_INSTALL = "task-base-extended \
 	    xserver-xorg gtk+ roboscripts \
 	    libwnck matchbox-wm \
 	    python-pyyaml python-pycairo python-pygtk \
-	    sr-sshkey screen bzip2 xz"
+	    sr-sshkey screen bzip2 xz \
+	    startup-notification"
 
 export IMAGE_BASENAME = "sr-image"
 IMAGE_LINGUAS = ""
