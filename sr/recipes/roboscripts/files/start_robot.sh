@@ -8,6 +8,9 @@ echo "ponies" >> /tmp/myfaceisonfire
 # Move to directory where user key is mounted
 cd $1
 
+# Create .srobo so the IDE exporter thing can find the disk
+touch .srobo
+
 # Unzip
 unzip -o robot.zip -d .robottmp
 wait $!
