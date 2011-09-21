@@ -1,6 +1,7 @@
 DESCRIPTION = "SR scripts for starting/stopping user code on a robot"
+DEPENDS = "initscripts"
 
-PR = "r0"
+PR = "r3"
 
 inherit update-rc.d
 
@@ -16,10 +17,12 @@ do_install() {
 	install -m 0755 ${WORKDIR}/insert.sh ${D}/etc/robot
 	install -m 0755 ${WORKDIR}/kill_robot.sh ${D}/etc/robot
 	install -m 0755 ${WORKDIR}/remove.sh ${D}/etc/robot
-	install -m 0755 ${WORKDIR}/robosetup ${D}/etc/init.d
 	install -m 0755 ${WORKDIR}/start_robot.sh ${D}/etc/robot
 
-	install -d ${D}/etc/udev/rules.d
+	install -m 0755 -d ${D}/etc/init.d
+	install -m 0755 ${WORKDIR}/robosetup ${D}/etc/init.d
+
+	install -m 0755 -d ${D}/etc/udev/rules.d
 	install ${WORKDIR}/zzzrobot.rules ${D}/etc/udev/rules.d
 }
 
