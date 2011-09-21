@@ -15,6 +15,12 @@ else
 	exit
 fi
 
+# Wait for any existing killing procedure to end
+while test -e /var/run/robot-killing
+do
+	sleep 0.2
+done
+
 # Already running?
 if test -e /var/run/robot; then
 	exit

@@ -6,9 +6,19 @@
 
 # /bin/echo "FROZEN" > /dev/cgroup/robot/freezer.state
 
+touch /var/run/robot-killing
+
 cat /dev/cgroup/robot/tasks | while read pid; do
-	kill -9 $pid
+	kill -TERM $pid
 done
+
+sleep 2
+
+cat /dev/cgroup/robot/tasks | while read pid; do
+	kill -KILL $pid
+done
+
+rm -f /var/run/robot-killing
 
 # /bin/echo "THAWED" > /dev/cgroup/robot/freezer.state
 
