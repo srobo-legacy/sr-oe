@@ -11,17 +11,12 @@ DEPENDS = "task-base-extended \
            ${SPLASH} \
 	   zlib iotop ipython \
 	   python zile \
-	   c2py robovis \
 	   xf86-input-evdev xf86-video-fbdev xterm \
 	   xserver-xorg gtk+ mtd-utils roboscripts \
 	   libwnck matchbox-wm \
 	   python-pyyaml python-pycairo python-pygtk \
 	   sr-sshkey screen bzip2 xz"
 
-# The following are intentionally left out of the install, as they're
-# shipped in robot.zip:
-# * c2py
-# * robovis
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
             ${SPLASH} \
