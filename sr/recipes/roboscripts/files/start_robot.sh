@@ -1,6 +1,8 @@
 #!/bin/sh
 
-echo "ponies" >> /tmp/myfaceisonfire
+RUNDIR=/tmp/sr
+
+echo "start_robot.sh: Starting code" >> /tmp/myfaceisonfire
 
 # Enter cgroup
 /bin/echo $$ > /dev/cgroup/robot/tasks
@@ -11,15 +13,21 @@ cd $1
 # Create .srobo so the IDE exporter thing can find the disk
 touch .srobo
 
+# Clean up old sessions
+rm -rf $RUNDIR
+
 # Unzip
-mkdir .robottmp
-unzip -o robot.zip -d .robottmp
+mkdir $RUNDIR
+unzip -q -o robot.zip -d $RUNDIR
 wait $!
 
-# Setup some useful environmental variables
+# Setup some useful environment variables
 export DISPLAY=:0.0
-export LD_LIBRARY_PATH=/mnt/user/.robottmp
 
-# Enter .robottmp, launch
-cd .robottmp
-python ./run.py
+cd $RUNDIR
+
+# Hack around zipfiles not storing permissions
+chmod u+x run.py
+
+# Pump logs onto the user key
+exec ./run.py -l $1
