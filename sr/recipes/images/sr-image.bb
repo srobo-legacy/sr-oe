@@ -15,8 +15,12 @@ DEPENDS = "task-base-extended \
 	   xserver-xorg gtk+ mtd-utils roboscripts \
 	   libwnck matchbox-wm \
 	   python-pyyaml python-pycairo python-pygtk \
+	   python-pyserial \
 	   sr-sshkey screen bzip2 xz \
-	   startup-notification"
+	   startup-notification \
+	   gstreamer gst-plugins-good gst-ffmpeg \
+	   libusb libusb1 python-pyusb \
+	   imagemagick"
 
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
@@ -29,8 +33,12 @@ IMAGE_INSTALL = "task-base-extended \
 	    xserver-xorg gtk+ roboscripts \
 	    libwnck matchbox-wm \
 	    python-pyyaml python-pycairo python-pygtk \
+	    python-pyserial mtd-utils \
 	    sr-sshkey screen bzip2 xz \
-	    startup-notification"
+	    startup-notification \
+	    gstreamer gst-plugins-good gst-ffmpeg \
+	    libusb libusb1 python-pyusb \
+	    imagemagick"
 
 # Modules for usb-to-serial adapters
 IMAGE_INSTALL += "kernel-module-usbserial kernel-module-cdc-acm \
