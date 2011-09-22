@@ -23,7 +23,8 @@ IMAGE_INSTALL = "task-base-extended \
             ${SPLASH} \
 	    zlib iotop ipython \
 	    python python-modules zile \
-	    opencv-apps kernel-module-uvcvideo \
+	    opencv-apps python-opencv \
+	    kernel-module-uvcvideo \
 	    xf86-input-evdev xf86-video-fbdev xterm \
 	    xserver-xorg gtk+ roboscripts \
 	    libwnck matchbox-wm \
