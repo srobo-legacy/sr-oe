@@ -13,7 +13,7 @@ COMPATIBLE_MACHINE = "beagleboard"
 # as well as any additional patches that SR needs to live
 SRCREV = "ea8ce293810ce84f227aa14a042265a4d0d8760e"
 
-MACHINE_KERNEL_PR_append = "+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "+gitr${SRCREV}.2"
 
 SRC_URI = "git://srobo.org/linux-2.6-bb.git;protocol=git;branch=2.6.32-psp \
            file://defconfig"
