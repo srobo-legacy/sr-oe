@@ -20,7 +20,9 @@ DEPENDS = "task-base-extended \
 	   startup-notification \
 	   gstreamer gst-plugins-good gst-ffmpeg \
 	   libusb libusb1 python-pyusb \
-	   imagemagick"
+	   imagemagick \
+	   git rsync \
+	   networkmanager cnetworkmanager"
 
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
@@ -38,7 +40,9 @@ IMAGE_INSTALL = "task-base-extended \
 	    startup-notification \
 	    gstreamer gst-plugins-good gst-ffmpeg \
 	    libusb libusb1 python-pyusb \
-	    imagemagick"
+	    imagemagick \
+	    git rsync \
+	    networkmanager cnetworkmanager"
 
 # Modules for usb-to-serial adapters
 IMAGE_INSTALL += "kernel-module-usbserial kernel-module-cdc-acm \
