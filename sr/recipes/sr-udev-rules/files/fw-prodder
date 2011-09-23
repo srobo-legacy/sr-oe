@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Check the script provided by the USB stick is present
+test -e /tmp/sr/fw-req || exit
+
+# Move into the robot cgroup so things don't accidentally escape
+/bin/echo $$ > /dev/cgroup/robot/tasks
+
+/tmp/sr/fw-req "$@"

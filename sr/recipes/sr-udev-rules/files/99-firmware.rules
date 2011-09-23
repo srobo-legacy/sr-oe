@@ -1,0 +1,1 @@
+SUBSYSTEM=="firmware", ACTION=="add", RUN+="/bin/fw-prodder $env{FIRMWARE} $env{DEVPATH}"

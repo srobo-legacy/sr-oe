@@ -22,7 +22,8 @@ DEPENDS = "task-base-extended \
 	   libusb libusb1 python-pyusb \
 	   imagemagick \
 	   git rsync \
-	   networkmanager cnetworkmanager"
+	   networkmanager cnetworkmanager \
+	   sr-udev-rules"
 
 IMAGE_INSTALL = "task-base-extended \
             ${ANGSTROM_EXTRA_INSTALL} \
@@ -42,7 +43,8 @@ IMAGE_INSTALL = "task-base-extended \
 	    libusb libusb1 python-pyusb \
 	    imagemagick \
 	    git rsync \
-	    networkmanager cnetworkmanager"
+	    networkmanager cnetworkmanager \
+	    sr-udev-rules"
 
 # Modules for usb-to-serial adapters
 IMAGE_INSTALL += "kernel-module-usbserial kernel-module-cdc-acm \
