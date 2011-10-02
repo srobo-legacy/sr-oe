@@ -1,5 +1,5 @@
 require u-boot.inc
-PR ="r30"
+PR ="r31"
 
 FILESPATHPKG =. "u-boot-git:"
 
@@ -13,14 +13,13 @@ SRCREV_afeb9260-180 = "6b8edfde22acc574b5532e9f086e6a7287a9bc78"
 SRC_URI_append_afeb9260 = " file://AFEB9260-network-fix.patch;patch=1"
 SRC_URI_append_afeb9260-180 = " file://AFEB9260-network-fix.patch;patch=1"
 
-SRC_URI_beagleboard = "git://gitorious.org/u-boot-omap3/mainline.git;branch=omap3-dev;protocol=git \
-                 file://fw-env.patch;patch=1 \
-                 file://dss2.patch;patch=1 \
-                 file://new-pinmux.patch;patch=1 \
-                 file://sr/enable-gpio144.patch;patch=1 \
+SRC_URI_beagleboard = "git://www.denx.de/git/u-boot.git;protocol=git \
+		    file://sr/0001-Disable-the-display.patch \
+		    file://sr/0002-Set-pin-mux-in-u-boot-to-give-GPIO144-rather-than-UA.patch \
 "
-SRCREV_beagleboard = "d363f9cb0918a1b6b92e2e20d01543d0c4f53274"
-PV_beagleboard = "2009.05+${PR}+gitr${SRCREV}"
+
+SRCREV_beagleboard = "279bbbca12e71ae68278b756048194003a6d6e21"
+PV_beagleboard = "2011.09+${PR}+gitr${SRCREV}"
 
 SRC_URI_omap3-touchbook = "git://gitorious.org/u-boot-omap3/mainline.git;branch=omap3-dev;protocol=git \
                  file://fw-env.patch;patch=1 \
