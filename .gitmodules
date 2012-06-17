@@ -3,4 +3,4 @@
 	url = ../openembedded.git
 [submodule "opt/bitbake"]
 	path = opt/bitbake
-	url = git://git.openembedded.net/bitbake
+	url = git://git.openembedded.org/bitbake.git
