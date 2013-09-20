@@ -19,6 +19,7 @@ rm -rf $RUNDIR
 # Unzip
 mkdir $RUNDIR
 unzip -q -o robot.zip -d $RUNDIR
+# wait for the last process -- ensure that the unzip is complete
 wait $!
 
 # Setup some useful environment variables
