@@ -16,11 +16,19 @@ touch .srobo
 # Clean up old sessions
 rm -rf $RUNDIR
 
-# Unzip
-mkdir $RUNDIR
-unzip -q -o robot.zip -d $RUNDIR
-# wait for the last process -- ensure that the unzip is complete
-wait $!
+# Check the zip is intact
+unzip -tq robot.zip >> /tmp/myfaceisonfire
+if [ $? == 0 ]
+then
+    mkdir $RUNDIR
+    unzip -q -o robot.zip -d $RUNDIR
+    # wait for the last process -- ensure that the unzip is complete
+    wait $!
+else
+    # Tell the user the robot.zip isn't valid
+    echo "Bad robot.zip"
+    exit
+fi
 
 # Setup some useful environment variables
 export DISPLAY=:0.0
